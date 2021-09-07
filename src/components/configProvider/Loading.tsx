@@ -1,13 +1,10 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
-export default function Summary() {
-
+export default function Loading() {
     return (
         <View style={styles.container}>
-            <Text>Summary</Text>
-            {/*<Text>{JSON.stringify(route.params.config, undefined, "\t")}</Text>*/}
-            {/*<Text>{JSON.stringify(route.params.formValues, undefined, "\t")}</Text>*/}
+            <Text>Loading...</Text>
         </View>
     );
 }

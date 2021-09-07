@@ -1,17 +1,27 @@
 import React, {useState} from 'react';
 import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Config} from "../../model/Config";
+import {FormValues} from "../../model/FormValues";
 
-export default function Form() {
+export interface FormProps {
+    config?: Config;
+    setFormValues: (formValues: FormValues) => void;
+}
+
+export default function Form(props: FormProps) {
     const [line1, setLine1] = useState('');
 
     const handleSubmit = () => {
-        const formValues = {
-            line1
-        }
+        const formValues: FormValues = {
+            line1: line1
+        };
+        props.setFormValues(formValues);
     }
 
     return (
         <View style={styles.container}>
+            <Text>Config:</Text>
+            <Text>{JSON.stringify(props.config)}</Text>
             <Text>Label</Text>
             <TextInput
                 style={styles.input}

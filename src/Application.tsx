@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Keyboard, TouchableWithoutFeedback} from 'react-native';
-import Configure from "./screens/Configure";
+import ConfigProvider from "./components/configProvider/ConfigProvider";
+import {ConfigContainer} from "./model/Config";
+import FormContainer from "./components/form/FormContainer";
 
 export default function Application() {
+    const [config, setConfig] = useState<ConfigContainer>();
+
     return (
-            <TouchableWithoutFeedback onPress={() => {
-                Keyboard.dismiss();
-            }}>
-                <Configure/>
-            </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => {
+            Keyboard.dismiss();
+        }}>
+            <ConfigProvider config={config} setConfig={setConfig}>
+                <FormContainer config={config}/>
+            </ConfigProvider>
+        </TouchableWithoutFeedback>
     );
 }
