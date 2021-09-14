@@ -4,12 +4,7 @@ import {Config} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
 
 const composeBody = (name: string, formValues: FormValues) => {
-    return `<table>
-  <tr>
-    <td>${formValues.line1}</td>
-    <td>${name}</td>
-  </tr>
-</table>`;
+    return `<h1>axxxx</h1><br/>xxxxx`;
 }
 
 const composeOptions = (config: Config, formValues: FormValues): MailComposerOptions => {
