@@ -14,8 +14,9 @@ const composeOptions = (config: Config, formValues: FormValues): MailComposerOpt
         recipients: [config.mail],
         subject: 'Test',
         body: body,
-        isHtml: true
-    }
+        isHtml: true,
+        attachments: formValues.photos
+    };
 }
 
 export const composeMail = (config: Config, formValues: FormValues): Promise<MailComposerResult> => {
