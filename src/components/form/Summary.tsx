@@ -3,6 +3,7 @@ import {StyleSheet, View, Text, Button} from 'react-native';
 import {texts} from "../../texts";
 import {Config} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
+import {composeMail} from "./composeMail";
 
 export interface SummaryProps {
     config: Config,
@@ -12,7 +13,7 @@ export interface SummaryProps {
 export default function Summary(props: SummaryProps) {
 
     const handleSend = () => {
-
+        composeMail(props.config, props.formValues);
     }
 
     return (
@@ -20,6 +21,7 @@ export default function Summary(props: SummaryProps) {
             <Text>Summary</Text>
             <Text>{JSON.stringify(props.config, undefined, "\t")}</Text>
             <Text>{JSON.stringify(props.formValues, undefined, "\t")}</Text>
+            <Button title={texts.back} onPress={handleSend}/>
             <Button title={texts.sendMail} onPress={handleSend}/>
             <Button title={texts.finish} onPress={() => {
             }}/>
