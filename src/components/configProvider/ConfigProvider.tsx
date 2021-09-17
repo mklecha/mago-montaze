@@ -6,22 +6,24 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import {CONFIG_KEY} from "../../vars";
 
 export interface ConfigProviderProps extends PropsWithChildren<{}> {
-    config?: ConfigContainer
+    config?: ConfigContainer;
     setConfig: (config: ConfigContainer) => void;
 }
 
 export default function ConfigProvider(props: ConfigProviderProps) {
 
     useEffect(() => {
-        AsyncStorage.getItem(CONFIG_KEY).then(data => {
-            const deserializedConfig = data != null ? JSON.parse(data) : {};
-            const config = constructConfig(deserializedConfig);
-            props.setConfig(config);
-        });
-    }, [])
+        if (!props.config) {
+            AsyncStorage.getItem(CONFIG_KEY).then(data => {
+                const deserializedConfig = data != null ? JSON.parse(data) : {};
+                const config = constructConfig(deserializedConfig);
+                props.setConfig(config);
+            });
+        }
+    }, []);
 
     const constructConfig = (deserializedConfig: any): ConfigContainer => {
-        if(!!deserializedConfig.name && !!deserializedConfig.mail){
+        if (!!deserializedConfig.name && !!deserializedConfig.mail) {
             return {
                 initialized: true,
                 config: {
@@ -40,7 +42,7 @@ export default function ConfigProvider(props: ConfigProviderProps) {
             return <Loading/>;
         }
         if (!props.config.initialized) {
-            return <ConfigForm {...props}/>
+            return <ConfigForm config={props.config} setConfig={props.setConfig}/>
         }
         return <>{props.children}</>
     }

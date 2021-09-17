@@ -7,13 +7,22 @@ import {composeMail} from "./composeMail";
 
 export interface SummaryProps {
     config: Config,
+    setFormValues: (formValues: FormValues) => void;
     formValues: FormValues;
 }
 
 export default function Summary(props: SummaryProps) {
 
+    const handleBack = () => {
+        const newFormValues = {...props.formValues, initialized: false};
+        props.setFormValues(newFormValues);
+    }
+
     const handleSend = () => {
         composeMail(props.config, props.formValues);
+    }
+
+    const handleFinish = () => {
     }
 
     return (
@@ -25,10 +34,9 @@ export default function Summary(props: SummaryProps) {
                 {props.formValues.photos.map((value: string, index: number) => (
                     <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
                 ))}
-                <Button title={texts.back} onPress={handleSend}/>
+                <Button title={texts.back} onPress={handleBack}/>
                 <Button title={texts.sendMail} onPress={handleSend}/>
-                <Button title={texts.finish} onPress={() => {
-                }}/>
+                <Button title={texts.finish} onPress={handleFinish}/>
             </ScrollView>
         </SafeAreaView>
     );

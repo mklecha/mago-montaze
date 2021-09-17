@@ -1,22 +1,31 @@
 import React, {useState} from 'react';
 import {Button, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput} from 'react-native';
-import {Config} from "../../model/Config";
+import {Config, ConfigContainer} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
 import PhotoPicker from "./PhotoPicker";
+import {texts} from "../../texts";
 
 export interface FormProps {
-    config?: Config;
+    config: Config;
+    formValues?: FormValues;
     setFormValues: (formValues: FormValues) => void;
+    setConfig: (config: ConfigContainer) => void;
 }
 
 export default function Form(props: FormProps) {
     const [line1, setLine1] = useState('');
     const [photos, setPhotos] = useState<string[]>([]);
 
+    const reopenConfig = () => {
+        const newConfig = {config: props.config, initialized: false}
+        props.setConfig(newConfig);
+    }
+
     const handleSubmit = () => {
         const formValues: FormValues = {
             line1: line1,
-            photos: photos
+            photos: photos,
+            initialized: true
         };
         props.setFormValues(formValues);
     }
@@ -40,7 +49,8 @@ export default function Form(props: FormProps) {
                 {photos.map((value: string, index: number) => (
                     <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
                 ))}
-                <Button title={'Next'} onPress={handleSubmit}/>
+                <Button title={texts.config} onPress={reopenConfig}/>
+                <Button title={texts.next} onPress={handleSubmit}/>
             </ScrollView>
         </SafeAreaView>
     );

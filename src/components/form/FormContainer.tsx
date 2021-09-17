@@ -5,7 +5,8 @@ import Summary from "./Summary";
 import Form from "./Form";
 
 export interface FormContainerProps {
-    config?: ConfigContainer
+    config?: ConfigContainer;
+    setConfig: (config: ConfigContainer) => void;
 }
 
 export default function FormContainer(props: FormContainerProps) {
@@ -13,10 +14,10 @@ export default function FormContainer(props: FormContainerProps) {
 
     const getScreen = () => {
         const config = props.config!.config!;
-        if (!formValues) {
-            return <Form config={config} setFormValues={setFormValues}/>
+        if (!formValues || !formValues.initialized) {
+            return <Form config={config} setConfig={props.setConfig} formValues={formValues} setFormValues={setFormValues} />
         }
-        return <Summary config={config} formValues={formValues}/>
+        return <Summary config={config} formValues={formValues} setFormValues={setFormValues}/>
     }
 
     return getScreen();

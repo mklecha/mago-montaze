@@ -11,8 +11,8 @@ export interface ConfigFormProps {
 }
 
 export default function ConfigForm(props: ConfigFormProps) {
-    const [name, setName] = useState('');
-    const [mail, setMail] = useState(DEFAULT_MAIL);
+    const [name, setName] = useState(props.config?.config?.name || '');
+    const [mail, setMail] = useState(props.config?.config?.mail || DEFAULT_MAIL);
 
     const saveConfiguration = () => {
         const config = {
@@ -22,10 +22,7 @@ export default function ConfigForm(props: ConfigFormProps) {
         AsyncStorage.setItem(CONFIG_KEY, JSON.stringify(config)).then(() => {
             props.setConfig({
                 initialized: true,
-                config: {
-                    name: name,
-                    mail: mail
-                }
+                config: config
             })
         });
     }
@@ -38,11 +35,13 @@ export default function ConfigForm(props: ConfigFormProps) {
                 <TextInput
                     style={styles.input}
                     onChangeText={e => setName(e)}
+                    defaultValue={props.config?.config?.name || ''}
                 />
                 <Text>Mail</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={e => setMail(e)}
+                    defaultValue={props.config?.config?.mail || DEFAULT_MAIL}
                 />
                 <Button title={texts.send} onPress={saveConfiguration}/>
             </ScrollView>

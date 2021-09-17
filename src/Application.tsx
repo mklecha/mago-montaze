@@ -12,7 +12,7 @@ export default function Application() {
             Keyboard.dismiss();
         }}>
             <ConfigProvider config={config} setConfig={setConfig}>
-                <FormContainer config={config}/>
+                <FormContainer config={config} setConfig={setConfig}/>
             </ConfigProvider>
         </TouchableWithoutFeedback>
     );
