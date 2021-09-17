@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo1",
-    "slug": "expo1",
+    "name": "mailsender",
+    "slug": "mailsender",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,7 +24,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "pl.dec"
+      "package": "pl.dec.mailsender",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
