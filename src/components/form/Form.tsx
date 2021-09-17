@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Image, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Button, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput} from 'react-native';
 import {Config} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
 import PhotoPicker from "./PhotoPicker";
@@ -27,20 +27,22 @@ export default function Form(props: FormProps) {
     }
 
     return (
-        <View style={styles.container}>
-            <Text>Config:</Text>
-            <Text>{JSON.stringify(props.config)}</Text>
-            <Text>Label</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={e => setLine1(e)}
-            />
-            <PhotoPicker addPhoto={addPhoto}/>
-            {photos.map((value: string, index: number) => (
-                <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
-            ))}
-            <Button title={'Next'} onPress={handleSubmit}/>
-        </View>
+        <SafeAreaView style={styles.container}>
+            <ScrollView>
+                <Text>Config:</Text>
+                <Text>{JSON.stringify(props.config)}</Text>
+                <Text>Label</Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={e => setLine1(e)}
+                />
+                <PhotoPicker addPhoto={addPhoto}/>
+                {photos.map((value: string, index: number) => (
+                    <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
+                ))}
+                <Button title={'Next'} onPress={handleSubmit}/>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 

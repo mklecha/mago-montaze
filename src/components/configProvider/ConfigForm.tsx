@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {CONFIG_KEY, DEFAULT_MAIL} from "../../vars";
 import {ConfigContainer} from "../../model/Config";
-import {Button, StyleSheet, TextInput, Text, View} from "react-native";
+import {Button, SafeAreaView, ScrollView, StyleSheet, Text, TextInput} from "react-native";
 import {texts} from "../../texts";
 
 export interface ConfigFormProps {
@@ -31,20 +31,22 @@ export default function ConfigForm(props: ConfigFormProps) {
     }
 
     return (
-        <View style={styles.container}>
-            <Text>Configuration</Text>
-            <Text>Name</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={e => setName(e)}
-            />
-            <Text>Mail</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={e => setMail(e)}
-            />
-            <Button title={texts.send} onPress={saveConfiguration}/>
-        </View>
+        <SafeAreaView style={styles.container}>
+            <ScrollView>
+                <Text>Configuration</Text>
+                <Text>Name</Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={e => setName(e)}
+                />
+                <Text>Mail</Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={e => setMail(e)}
+                />
+                <Button title={texts.send} onPress={saveConfiguration}/>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 const styles = StyleSheet.create({
