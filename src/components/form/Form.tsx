@@ -4,6 +4,8 @@ import {Config, ConfigContainer} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
 import PhotoPicker from "./PhotoPicker";
 import {texts} from "../../texts";
+import MyDatePicker from "./inputs/MyDatePicker";
+import NumericInput from 'react-native-numeric-input';
 
 export interface FormProps {
     config: Config;
@@ -13,7 +15,12 @@ export interface FormProps {
 }
 
 export default function Form(props: FormProps) {
-    const [line1, setLine1] = useState('');
+    const [localization, setLocalization] = useState('');
+    const [clientName, setClientName] = useState('');
+    const [startTimestamp, setStartTimestamp] = useState(new Date());
+    const [endTimestamp, setEndTimestamp] = useState(new Date());
+    const [numberOfPersons, setNumberOfPersons] = useState(1);
+    const [comments, setComments] = useState('');
     const [photos, setPhotos] = useState<string[]>([]);
 
     const reopenConfig = () => {
@@ -23,8 +30,14 @@ export default function Form(props: FormProps) {
 
     const handleSubmit = () => {
         const formValues: FormValues = {
-            line1: line1,
+            localization: localization,
+            clientName: clientName,
+            comments: comments,
+            startTimestamp: startTimestamp,
+            endTimestamp: endTimestamp,
+            numberOfPersons: numberOfPersons,
             photos: photos,
+
             initialized: true
         };
         props.setFormValues(formValues);
@@ -40,11 +53,37 @@ export default function Form(props: FormProps) {
             <ScrollView>
                 <Text>Config:</Text>
                 <Text>{JSON.stringify(props.config)}</Text>
-                <Text>Label</Text>
+
+                <Text>Lokalizacja</Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={e => setLine1(e)}
+                    onChangeText={e => setLocalization(e)}
                 />
+                <Text>ClientName</Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={e => setClientName(e)}
+                />
+
+                <Text>Start date</Text>
+                <MyDatePicker setDate={setStartTimestamp}/>
+
+                <Text>End date date</Text>
+                <MyDatePicker setDate={setEndTimestamp}/>
+
+                <Text>Number of persons</Text>
+                <NumericInput value={numberOfPersons} onChange={value => setNumberOfPersons(value)}
+                              minValue={0}/>
+
+
+                <Text>Comments</Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={e => setComments(e)}
+                    numberOfLines={3}
+                />
+
+
                 <PhotoPicker addPhoto={addPhoto}/>
                 {photos.map((value: string, index: number) => (
                     <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>

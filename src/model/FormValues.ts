@@ -1,5 +1,10 @@
 export interface FormValues {
-    line1: string;
+    localization: string;
+    clientName: string;
+    startTimestamp: Date;
+    endTimestamp: Date;
+    numberOfPersons: number;
+    comments: string;
     photos: string[];
 
     initialized: boolean;
