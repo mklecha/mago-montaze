@@ -13,6 +13,13 @@ export interface SummaryProps {
 
 export default function Summary(props: SummaryProps) {
 
+    const getField = (label: string, value: string) => (
+        <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+            <Text>{label}: </Text>
+            <Text style={styles.formValue}>{value}</Text>
+        </View>
+    )
+
     const handleBack = () => {
         const newFormValues = {...props.formValues, initialized: false};
         props.setFormValues(newFormValues);
@@ -38,6 +45,15 @@ export default function Summary(props: SummaryProps) {
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 <Text>{texts.summary.title}</Text>
+
+                {getField(texts.form.localization, props.formValues.localization)}
+                {getField(texts.form.clientName, props.formValues.clientName)}
+                {getField(texts.form.startDate, props.formValues.startTimestamp!.toLocaleDateString())}
+                {getField(texts.form.endDate, props.formValues.startTimestamp!.toLocaleDateString())}
+                {getField(texts.form.numberOfPersons, '' + props.formValues.numberOfPersons)}
+                {getField(texts.form.comments, '' + props.formValues.comments)}
+
+                <Text>{texts.form.photos}</Text>
                 {props.formValues.photos.map((value: string, index: number) => (
                     <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
                 ))}
@@ -54,6 +70,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         padding: 8,
         marginTop: 50
+    },
+    formValue: {
+        fontWeight: 'bold'
     },
     button: {
         borderWidth: 1,

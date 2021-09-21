@@ -18,7 +18,8 @@ export const texts = {
         startDate: "Start date",
         endDate: "End date",
         numberOfPersons: "Number of persons",
-        comments: "Comments"
+        comments: "Comments",
+        photos: "Photos"
     },
 
     datePicker: {
