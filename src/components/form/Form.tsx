@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Button, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput} from 'react-native';
 import {Config, ConfigContainer} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
-import PhotoPicker from "./PhotoPicker";
+import PhotoPicker from "./inputs/PhotoPicker";
 import {texts} from "../../texts";
 import MyDatePicker from "./inputs/MyDatePicker";
 import NumericInput from 'react-native-numeric-input';
@@ -17,8 +17,8 @@ export interface FormProps {
 export default function Form(props: FormProps) {
     const [localization, setLocalization] = useState('');
     const [clientName, setClientName] = useState('');
-    const [startTimestamp, setStartTimestamp] = useState(new Date());
-    const [endTimestamp, setEndTimestamp] = useState(new Date());
+    const [startTimestamp, setStartTimestamp] = useState<Date>();
+    const [endTimestamp, setEndTimestamp] = useState<Date>();
     const [numberOfPersons, setNumberOfPersons] = useState(1);
     const [comments, setComments] = useState('');
     const [photos, setPhotos] = useState<string[]>([]);
@@ -66,7 +66,7 @@ export default function Form(props: FormProps) {
                 <MyDatePicker setDate={setStartTimestamp}/>
 
                 <Text>{texts.form.endDate}</Text>
-                <MyDatePicker setDate={setEndTimestamp}/>
+                <MyDatePicker setDate={setEndTimestamp} minimumDate={startTimestamp}/>
 
                 <Text>{texts.form.numberOfPersons}</Text>
                 <NumericInput value={numberOfPersons} onChange={value => setNumberOfPersons(value)}

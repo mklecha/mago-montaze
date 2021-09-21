@@ -4,20 +4,19 @@ import {Keyboard, StyleSheet, TextInput} from "react-native";
 import {texts} from "../../../texts";
 
 export interface MyDatePickerProps {
-    setDate: (date: Date) => void
+    setDate: (date: Date) => void;
+    minimumDate?: Date;
 }
 
 export default function MyDatePicker(props: MyDatePickerProps) {
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(new Date());
+    const [value, setValue] = useState<Date>();
 
     const handleChange = (event: any, selectedDate: any) => {
         setOpen(false);
         setValue(selectedDate);
+        props.setDate(selectedDate);
 
-        if (selectedDate) {
-            props.setDate(selectedDate);
-        }
         Keyboard.dismiss();
     };
 
@@ -35,6 +34,7 @@ export default function MyDatePicker(props: MyDatePickerProps) {
                     is24Hour={true}
                     display="default"
                     onChange={handleChange}
+                    minimumDate={props.minimumDate}
                 />
             )}
         </>

@@ -3,7 +3,7 @@ import {Button, Platform} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import {ImagePickerResult} from "expo-image-picker";
 import {ImagePickerOptions} from "expo-image-picker/src/ImagePicker.types";
-import {texts} from '../../texts';
+import {texts} from '../../../texts';
 
 export interface PhotoPickerProps {
     addPhoto: (photoURI: string) => void;
