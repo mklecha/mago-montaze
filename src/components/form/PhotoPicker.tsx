@@ -2,12 +2,18 @@ import React, {useEffect} from 'react';
 import {Button, Platform} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import {ImagePickerResult} from "expo-image-picker";
+import {ImagePickerOptions} from "expo-image-picker/src/ImagePicker.types";
 
 export interface PhotoPickerProps {
     addPhoto: (photoURI: string) => void;
 }
 
 export default function PhotoPicker(props: PhotoPickerProps) {
+    const photoOptions: ImagePickerOptions = {
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 0.2,
+    }
+
     useEffect(() => {
         (async () => {
             if (Platform.OS !== 'web') {
@@ -20,10 +26,15 @@ export default function PhotoPicker(props: PhotoPickerProps) {
     }, []);
 
     const pickImage = async () => {
-        let result: ImagePickerResult = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            quality: 0.2,
-        });
+        let result: ImagePickerResult = await ImagePicker.launchImageLibraryAsync(photoOptions);
+
+        if (!result.cancelled) {
+            props.addPhoto(result.uri);
+        }
+    };
+
+    const takePhoto = async () => {
+        let result = await ImagePicker.launchCameraAsync(photoOptions)
 
         if (!result.cancelled) {
             props.addPhoto(result.uri);
@@ -31,6 +42,9 @@ export default function PhotoPicker(props: PhotoPickerProps) {
     };
 
     return (
-        <Button title="Pick an image from camera roll" onPress={pickImage}/>
+        <>
+            <Button title="Take a photo" onPress={takePhoto}/>
+            <Button title="Pick an image from camera roll" onPress={pickImage}/>
+        </>
     );
 }
