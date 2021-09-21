@@ -46,6 +46,7 @@ export default function Summary(props: SummaryProps) {
             <ScrollView>
                 <Text>{texts.summary.title}</Text>
 
+                {getField(texts.form.jobSuccessful, props.formValues.jobSuccessful ? texts.yes : texts.no)}
                 {getField(texts.form.localization, props.formValues.localization)}
                 {getField(texts.form.clientName, props.formValues.clientName)}
                 {getField(texts.form.startDate, props.formValues.startTimestamp!.toLocaleDateString())}

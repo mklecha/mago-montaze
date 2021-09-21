@@ -1,4 +1,5 @@
 export interface FormValues {
+    jobSuccessful: boolean;
     localization: string;
     clientName: string;
     startTimestamp?: Date;

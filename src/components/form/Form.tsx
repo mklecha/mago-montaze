@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput} from 'react-native';
+import {Button, Image, SafeAreaView, ScrollView, StyleSheet, Switch, Text, TextInput} from 'react-native';
 import {Config, ConfigContainer} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
 import PhotoPicker from "./inputs/PhotoPicker";
@@ -16,6 +16,7 @@ export interface FormProps {
 }
 
 export default function Form(props: FormProps) {
+    const [jobSuccessful, setJobSuccessful] = useState(true);
     const [localization, setLocalization] = useState('');
     const [clientName, setClientName] = useState('');
     const [startTimestamp, setStartTimestamp] = useState<Date>();
@@ -31,6 +32,7 @@ export default function Form(props: FormProps) {
 
     const handleSubmit = () => {
         const formValues: FormValues = {
+            jobSuccessful: jobSuccessful,
             localization: localization,
             clientName: clientName,
             comments: comments,
@@ -53,6 +55,10 @@ export default function Form(props: FormProps) {
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 <Text>{texts.form.title}</Text>
+
+                <Text>{texts.form.jobSuccessful}</Text>
+                <Switch value={jobSuccessful} onValueChange={value => setJobSuccessful(value)}/>
+
                 <Text>{texts.form.localization}</Text>
                 <TextInput
                     style={styles.input}
@@ -94,6 +100,7 @@ export default function Form(props: FormProps) {
                 ))}
                 <Button title={texts.openConfig} onPress={reopenConfig}/>
                 <Button title={texts.next} onPress={handleSubmit} disabled={!validateForm({
+                    jobSuccessful: jobSuccessful,
                     localization: localization,
                     clientName: clientName,
                     comments: comments,

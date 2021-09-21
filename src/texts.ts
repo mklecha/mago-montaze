@@ -3,6 +3,8 @@ export const texts = {
     back: "Back",
     loading: "Loading",
     openConfig: "Open configuration",
+    yes: "Yes",
+    no: "No",
 
     config: {
         title: "Configuration",
@@ -12,6 +14,7 @@ export const texts = {
     },
 
     form: {
+        jobSuccessful: "Job successful",
         title: "Report a job",
         localization: "Localization",
         clientName: "Client name",
