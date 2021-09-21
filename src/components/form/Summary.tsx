@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Image, SafeAreaView, ScrollView, StyleSheet, Text} from 'react-native';
+import {Alert, Button, Image, SafeAreaView, ScrollView, StyleSheet, Text} from 'react-native';
 import {texts} from "../../texts";
 import {Config} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
@@ -23,6 +23,15 @@ export default function Summary(props: SummaryProps) {
     }
 
     const handleFinish = () => {
+        const alertTexts = texts.summary.alert;
+        Alert.alert(
+            alertTexts.title,
+            alertTexts.message,
+            [
+                {text: alertTexts.cancel},
+                {text: alertTexts.ok, onPress: () => props.setFormValues({} as FormValues)}
+            ]
+        );
     }
 
     return (

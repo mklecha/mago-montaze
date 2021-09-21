@@ -34,5 +34,11 @@ export const texts = {
         title: "Summary",
         sendMail: "Send mail",
         finish: "Finish",
+        alert: {
+            title: "Are you sure you want to close?",
+            message: "Closing will clear your data. Make sure you successfully sent the mail before proceeding.",
+            ok: "Yes, close",
+            cancel: "Cancel"
+        }
     }
 }
