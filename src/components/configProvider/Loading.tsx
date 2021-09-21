@@ -1,10 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {texts} from '../../texts';
 
 export default function Loading() {
     return (
         <View style={styles.container}>
-            <Text>Loading...</Text>
+            <Text>{texts.loading}</Text>
         </View>
     );
 }

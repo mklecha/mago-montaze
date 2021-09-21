@@ -3,6 +3,7 @@ import {Button, Platform} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import {ImagePickerResult} from "expo-image-picker";
 import {ImagePickerOptions} from "expo-image-picker/src/ImagePicker.types";
+import {texts} from '../../texts';
 
 export interface PhotoPickerProps {
     addPhoto: (photoURI: string) => void;
@@ -19,7 +20,7 @@ export default function PhotoPicker(props: PhotoPickerProps) {
             if (Platform.OS !== 'web') {
                 const {status} = await ImagePicker.requestMediaLibraryPermissionsAsync();
                 if (status !== 'granted') {
-                    alert('Sorry, we need camera roll permissions to make this work!');
+                    alert(texts.photoPicker.permissionAlert);
                 }
             }
         })();
@@ -43,8 +44,8 @@ export default function PhotoPicker(props: PhotoPickerProps) {
 
     return (
         <>
-            <Button title="Take a photo" onPress={takePhoto}/>
-            <Button title="Pick an image from camera roll" onPress={pickImage}/>
+            <Button title={texts.photoPicker.takePhoto} onPress={takePhoto}/>
+            <Button title={texts.photoPicker.pickPhoto} onPress={pickImage}/>
         </>
     );
 }

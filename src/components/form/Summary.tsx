@@ -28,15 +28,15 @@ export default function Summary(props: SummaryProps) {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <Text>Summary</Text>
+                <Text>{texts.summary.title}</Text>
                 <Text>{JSON.stringify(props.config, undefined, "\t")}</Text>
                 <Text>{JSON.stringify(props.formValues, undefined, "\t")}</Text>
                 {props.formValues.photos.map((value: string, index: number) => (
                     <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
                 ))}
                 <Button title={texts.back} onPress={handleBack}/>
-                <Button title={texts.sendMail} onPress={handleSend}/>
-                <Button title={texts.finish} onPress={handleFinish}/>
+                <Button title={texts.summary.sendMail} onPress={handleSend}/>
+                <Button title={texts.summary.finish} onPress={handleFinish}/>
             </ScrollView>
         </SafeAreaView>
     );

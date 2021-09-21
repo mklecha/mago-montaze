@@ -30,20 +30,20 @@ export default function ConfigForm(props: ConfigFormProps) {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <Text>Configuration</Text>
-                <Text>Name</Text>
+                <Text>{texts.config.title}</Text>
+                <Text>{texts.config.yourName}</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={e => setName(e)}
                     defaultValue={props.config?.config?.name || ''}
                 />
-                <Text>Mail</Text>
+                <Text>{texts.config.receiverMail}</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={e => setMail(e)}
                     defaultValue={props.config?.config?.mail || DEFAULT_MAIL}
                 />
-                <Button title={texts.send} onPress={saveConfiguration}/>
+                <Button title={texts.config.save} onPress={saveConfiguration}/>
             </ScrollView>
         </SafeAreaView>
     );

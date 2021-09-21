@@ -51,32 +51,29 @@ export default function Form(props: FormProps) {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <Text>Config:</Text>
-                <Text>{JSON.stringify(props.config)}</Text>
-
-                <Text>Lokalizacja</Text>
+                <Text>{texts.form.localization}</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={e => setLocalization(e)}
                 />
-                <Text>ClientName</Text>
+                <Text>{texts.form.clientName}</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={e => setClientName(e)}
                 />
 
-                <Text>Start date</Text>
+                <Text>{texts.form.startDate}</Text>
                 <MyDatePicker setDate={setStartTimestamp}/>
 
-                <Text>End date date</Text>
+                <Text>{texts.form.endDate}</Text>
                 <MyDatePicker setDate={setEndTimestamp}/>
 
-                <Text>Number of persons</Text>
+                <Text>{texts.form.numberOfPersons}</Text>
                 <NumericInput value={numberOfPersons} onChange={value => setNumberOfPersons(value)}
                               minValue={0}/>
 
 
-                <Text>Comments</Text>
+                <Text>{texts.form.comments}</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={e => setComments(e)}
@@ -88,7 +85,7 @@ export default function Form(props: FormProps) {
                 {photos.map((value: string, index: number) => (
                     <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
                 ))}
-                <Button title={texts.config} onPress={reopenConfig}/>
+                <Button title={texts.openConfig} onPress={reopenConfig}/>
                 <Button title={texts.next} onPress={handleSubmit}/>
             </ScrollView>
         </SafeAreaView>
