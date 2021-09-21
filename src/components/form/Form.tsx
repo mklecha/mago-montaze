@@ -6,6 +6,7 @@ import PhotoPicker from "./inputs/PhotoPicker";
 import {texts} from "../../texts";
 import MyDatePicker from "./inputs/MyDatePicker";
 import NumericInput from 'react-native-numeric-input';
+import {validateForm} from "./validator";
 
 export interface FormProps {
     config: Config;
@@ -92,7 +93,16 @@ export default function Form(props: FormProps) {
                     <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
                 ))}
                 <Button title={texts.openConfig} onPress={reopenConfig}/>
-                <Button title={texts.next} onPress={handleSubmit}/>
+                <Button title={texts.next} onPress={handleSubmit} disabled={!validateForm({
+                    localization: localization,
+                    clientName: clientName,
+                    comments: comments,
+                    startTimestamp: startTimestamp,
+                    endTimestamp: endTimestamp,
+                    numberOfPersons: numberOfPersons,
+                    photos: photos,
+                    initialized: false
+                })}/>
             </ScrollView>
         </SafeAreaView>
     );
