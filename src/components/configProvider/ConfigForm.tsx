@@ -51,12 +51,13 @@ export default function ConfigForm(props: ConfigFormProps) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
+        padding: 8,
+        marginTop: 50
     },
     input: {
         borderWidth: 1,
         borderColor: '#777',
         padding: 8,
         margin: 10,
-        width: 200,
     }
 });

@@ -51,6 +51,7 @@ export default function Form(props: FormProps) {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
+                <Text>{texts.form.title}</Text>
                 <Text>{texts.form.localization}</Text>
                 <TextInput
                     style={styles.input}
@@ -69,14 +70,19 @@ export default function Form(props: FormProps) {
                 <MyDatePicker setDate={setEndTimestamp} minimumDate={startTimestamp}/>
 
                 <Text>{texts.form.numberOfPersons}</Text>
-                <NumericInput value={numberOfPersons} onChange={value => setNumberOfPersons(value)}
-                              minValue={0}/>
+                <NumericInput
+                    containerStyle={styles.numberInput}
+                    value={numberOfPersons}
+                    onChange={value => setNumberOfPersons(value)}
+                    minValue={0}
+                />
 
 
                 <Text>{texts.form.comments}</Text>
                 <TextInput
-                    style={styles.input}
+                    style={styles.multiline}
                     onChangeText={e => setComments(e)}
+                    multiline={true}
                     numberOfLines={3}
                 />
 
@@ -95,13 +101,24 @@ export default function Form(props: FormProps) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        padding: 8
+        padding: 8,
+        marginTop: 50
+    },
+    numberInput: {
+        padding: 8,
+        margin: 10,
     },
     input: {
         borderWidth: 1,
         borderColor: '#777',
         padding: 8,
         margin: 10,
-        width: 200,
+    },
+    multiline: {
+        borderWidth: 1,
+        borderColor: '#777',
+        padding: 8,
+        margin: 10,
+        textAlignVertical: "top"
     }
 });

@@ -12,6 +12,7 @@ export const texts = {
     },
 
     form: {
+        title: "Report a job",
         localization: "Localization",
         clientName: "Client name",
         startDate: "Start date",

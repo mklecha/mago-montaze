@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Button, Image, SafeAreaView, ScrollView, StyleSheet, Text} from 'react-native';
+import {Alert, Button, Image, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {texts} from "../../texts";
 import {Config} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
@@ -38,14 +38,12 @@ export default function Summary(props: SummaryProps) {
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 <Text>{texts.summary.title}</Text>
-                <Text>{JSON.stringify(props.config, undefined, "\t")}</Text>
-                <Text>{JSON.stringify(props.formValues, undefined, "\t")}</Text>
                 {props.formValues.photos.map((value: string, index: number) => (
                     <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
                 ))}
-                <Button title={texts.back} onPress={handleBack}/>
-                <Button title={texts.summary.sendMail} onPress={handleSend}/>
-                <Button title={texts.summary.finish} onPress={handleFinish}/>
+                <View style={styles.button}><Button title={texts.back} onPress={handleBack}/></View>
+                <View style={styles.button}><Button title={texts.summary.sendMail} onPress={handleSend}/></View>
+                <View style={styles.button}><Button title={texts.summary.finish} onPress={handleFinish}/></View>
             </ScrollView>
         </SafeAreaView>
     );
@@ -54,12 +52,11 @@ export default function Summary(props: SummaryProps) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: '#777',
         padding: 8,
-        margin: 10,
-        width: 200,
+        marginTop: 50
+    },
+    button: {
+        borderWidth: 1,
+        borderColor: '#fff',
     }
 });
