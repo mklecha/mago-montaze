@@ -3,7 +3,7 @@ import {Alert, Button, Image, SafeAreaView, ScrollView, StyleSheet, Text, View} 
 import {texts} from "../../texts";
 import {Config} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
-import {composeMail} from "./composeMail";
+import {composeMail} from "../../mailComposer/composeMail";
 
 export interface SummaryProps {
     config: Config,

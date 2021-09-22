@@ -36,8 +36,8 @@ export default function Form(props: FormProps) {
             localization: localization,
             clientName: clientName,
             comments: comments,
-            startTimestamp: startTimestamp,
-            endTimestamp: endTimestamp,
+            startTimestamp: startTimestamp!,
+            endTimestamp: endTimestamp!,
             numberOfPersons: numberOfPersons,
             photos: photos,
 
@@ -104,8 +104,8 @@ export default function Form(props: FormProps) {
                     localization: localization,
                     clientName: clientName,
                     comments: comments,
-                    startTimestamp: startTimestamp,
-                    endTimestamp: endTimestamp,
+                    startTimestamp: startTimestamp!,
+                    endTimestamp: endTimestamp!,
                     numberOfPersons: numberOfPersons,
                     photos: photos,
                     initialized: false
