@@ -1,13 +1,13 @@
-import {StyleSheet} from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const headerStyles = StyleSheet.create({
     title: {
         color: '#fff',
-        fontSize: 25,
-        fontWeight: "bold"
+        fontSize: 20,
+        fontWeight: 'bold'
     },
     settingsIcon: {
-        justifyContent: "center"
+        justifyContent: 'center'
     }
 });
 
@@ -20,15 +20,15 @@ export const containerStyles = StyleSheet.create({
     },
     center: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     row: {
         marginTop: 10,
         flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center"
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     }
 })
 
@@ -39,7 +39,7 @@ export const summaryStyles = StyleSheet.create({
         marginBottom: 3
     },
     fieldValue: {
-        fontWeight: "bold"
+        fontWeight: 'bold'
     },
     button: {
         borderWidth: 1,
@@ -64,7 +64,7 @@ export const inputStyles = StyleSheet.create({
         padding: 8
     },
     multiline: {
-        textAlignVertical: "top"
+        textAlignVertical: 'top'
     },
     button: {
         marginTop: 20

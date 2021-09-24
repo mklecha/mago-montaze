@@ -18,9 +18,13 @@ export default function PhotoPicker(props: PhotoPickerProps) {
     useEffect(() => {
         (async () => {
             if (Platform.OS !== 'web') {
-                const {status} = await ImagePicker.requestMediaLibraryPermissionsAsync();
-                if (status !== 'granted') {
-                    alert(texts.photoPicker.permissionAlert);
+                let response = await ImagePicker.requestMediaLibraryPermissionsAsync();
+                if (response.status !== 'granted') {
+                    alert(texts.photoPicker.permissionGalleryAlert);
+                }
+                response = await ImagePicker.requestCameraPermissionsAsync();
+                if (response.status !== 'granted') {
+                    alert(texts.photoPicker.permissionCameraAlert);
                 }
             }
         })();

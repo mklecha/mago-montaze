@@ -122,6 +122,7 @@ export default function Form(props: FormProps) {
                         multiline={true}
                         numberOfLines={3}
                         defaultValue={props.formValues?.comments || ''}
+                        placeholder={!jobSuccessful ? texts.form.reasonForFailure : undefined}
                     />
 
 
