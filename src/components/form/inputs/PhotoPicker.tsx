@@ -1,12 +1,15 @@
 import React, {useEffect} from 'react';
-import {Button, Platform} from 'react-native';
+import {Alert, Button, Image, Platform, Pressable, Text, View} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import {ImagePickerResult} from "expo-image-picker";
-import {ImagePickerOptions} from "expo-image-picker/src/ImagePicker.types";
+import {ImagePickerResult} from 'expo-image-picker';
+import {ImagePickerOptions} from 'expo-image-picker/src/ImagePicker.types';
 import {texts} from '../../../texts';
+import {photoPickerStyles} from '../../../styles';
 
 export interface PhotoPickerProps {
     addPhoto: (photoURI: string) => void;
+    removePhoto: (photoIndex: number) => void;
+    photos: string[];
 }
 
 export default function PhotoPicker(props: PhotoPickerProps) {
@@ -46,10 +49,32 @@ export default function PhotoPicker(props: PhotoPickerProps) {
         }
     };
 
+    const handlePhotoPress = (photoIndex: number) => {
+        const alertTexts = texts.photoPicker.alert;
+        Alert.alert(
+            alertTexts.title,
+            alertTexts.message,
+            [
+                {text: alertTexts.cancel},
+                {text: alertTexts.ok, onPress: () => props.removePhoto(photoIndex)}
+            ]
+        );
+    }
+
     return (
-        <>
+        <View style={photoPickerStyles.container}>
+            <View style={photoPickerStyles.photosContainer}>
+                {props.photos.map((value: string, index: number) => (
+                    <View key={index} style={photoPickerStyles.photoContainer}>
+                        <Pressable onPress={() => handlePhotoPress(index)}>
+                            <Image source={{uri: value}} style={photoPickerStyles.photo} resizeMode={'contain'}/>
+                        </Pressable>
+                    </View>
+                ))}
+            </View>
             <Button title={texts.photoPicker.takePhoto} onPress={takePhoto}/>
+            <Text style={photoPickerStyles.orButton}>{texts.or}</Text>
             <Button title={texts.photoPicker.pickPhoto} onPress={pickImage}/>
-        </>
+        </View>
     );
 }

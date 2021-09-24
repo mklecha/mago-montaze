@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
-import {Button, Image, SafeAreaView, ScrollView, Switch, Text, TextInput, View} from 'react-native';
-import {Config, ConfigContainer} from "../../model/Config";
-import {FormValues} from "../../model/FormValues";
-import PhotoPicker from "./inputs/PhotoPicker";
-import {texts} from "../../texts";
-import MyDatePicker from "./inputs/MyDatePicker";
+import {Button, SafeAreaView, ScrollView, Switch, Text, TextInput, View} from 'react-native';
+import {Config, ConfigContainer} from '../../model/Config';
+import {FormValues} from '../../model/FormValues';
+import PhotoPicker from './inputs/PhotoPicker';
+import {texts} from '../../texts';
+import MyDatePicker from './inputs/MyDatePicker';
 import NumericInput from 'react-native-numeric-input';
-import {validateForm} from "./validator";
-import MyHeader from "../MyHeader";
-import {containerStyles, inputStyles} from "../../styles";
+import {validateForm} from './validator';
+import MyHeader from '../MyHeader';
+import {containerStyles, inputStyles} from '../../styles';
 
 export interface FormProps {
     config: Config;
@@ -74,6 +74,12 @@ export default function Form(props: FormProps) {
         setPhotos(newPhotos);
     }
 
+    const removePhoto = (photoIndex: number) => {
+        const newPhotos = [...photos];
+        newPhotos.splice(photoIndex, 1);
+        setPhotos(newPhotos);
+    }
+
     return (
         <SafeAreaView style={containerStyles.container}>
             <ScrollView>
@@ -126,10 +132,8 @@ export default function Form(props: FormProps) {
                     />
 
 
-                    <PhotoPicker addPhoto={addPhoto}/>
-                    {photos.map((value: string, index: number) => (
-                        <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
-                    ))}
+                    <Text style={inputStyles.label}>{texts.form.photos}</Text>
+                    <PhotoPicker photos={photos} addPhoto={addPhoto} removePhoto={removePhoto}/>
                     <Button title={texts.next} onPress={handleSubmit} disabled={!isFormValid()}/>
                 </View>
             </ScrollView>

@@ -3,6 +3,7 @@ export const textsEN = {
     back: 'Back',
     yes: 'Yes',
     no: 'No',
+    or: 'Or',
 
     config: {
         title: 'Configuration',
@@ -32,7 +33,13 @@ export const textsEN = {
         permissionGalleryAlert: 'Sorry, we need camera roll permissions to make this work!',
         permissionCameraAlert: 'Sorry, we need camera permissions to make this work!',
         takePhoto: 'Take a photo',
-        pickPhoto: 'Pick an image from camera roll'
+        pickPhoto: 'Pick an image from camera roll',
+        alert: {
+            title: 'Delete photo',
+            message: 'Are you sure you want to delete this photo?',
+            ok: 'Delete',
+            cancel: 'Cancel'
+        }
     },
 
     summary: {
@@ -53,6 +60,7 @@ export const texts: typeof textsEN = {
     back: 'Wróć',
     yes: 'Tak',
     no: 'Nie',
+    or: 'Lub',
 
     config: {
         title: 'Ustawienia',
@@ -71,7 +79,7 @@ export const texts: typeof textsEN = {
         numberOfPersons: 'Liczba osób',
         comments: 'Uwagi',
         reasonForFailure: 'Podaj powód czemu montaż nie został wykonany',
-        photos: 'Załączniki'
+        photos: 'Zdjęcia'
     },
 
     datePicker: {
@@ -82,7 +90,13 @@ export const texts: typeof textsEN = {
         permissionGalleryAlert: 'Aplikacja potrzebuje dostępu do zdjęć z galerii aby działać poprawnie',
         permissionCameraAlert: 'Aplikacja potrzebuje dostępu do aparatu aby działać poprawnie',
         takePhoto: 'Zrób zdjęcie',
-        pickPhoto: 'Wybierz zdjęcie z galerii'
+        pickPhoto: 'Wybierz zdjęcie z galerii',
+        alert: {
+            title: 'Usuń zdjęcie',
+            message: 'Czy na pewno chcesz usunąć to zdjęcie?',
+            ok: 'Tak, usuń',
+            cancel: 'Anuluj'
+        }
     },
 
     summary: {

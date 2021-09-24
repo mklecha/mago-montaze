@@ -30,7 +30,7 @@ export const containerStyles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center'
     }
-})
+});
 
 export const summaryStyles = StyleSheet.create({
     field: {
@@ -45,7 +45,7 @@ export const summaryStyles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#fff',
     }
-})
+});
 
 export const inputStyles = StyleSheet.create({
     colorBlack: {
@@ -69,4 +69,35 @@ export const inputStyles = StyleSheet.create({
     button: {
         marginTop: 20
     }
-})
+});
+
+export const photoPickerStyles = StyleSheet.create({
+    container: {
+        marginBottom: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
+
+        borderStyle: 'dashed',
+        borderColor: '#777',
+        borderWidth: 1,
+        alignItems: 'center',
+    },
+    photosContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
+    photoContainer: {
+        width: '33%',
+        paddingLeft: 5,
+        paddingRight: 5,
+        marginTop: 5,
+        marginBottom: 10
+    },
+    photo: {
+        height: 100
+    },
+    orButton: {
+        margin: 10
+    }
+});
