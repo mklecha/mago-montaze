@@ -131,7 +131,6 @@ export default function Form(props: FormProps) {
                         placeholder={!jobSuccessful ? texts.form.reasonForFailure : undefined}
                     />
 
-
                     <Text style={inputStyles.label}>{texts.form.photos}</Text>
                     <PhotoPicker photos={photos} addPhoto={addPhoto} removePhoto={removePhoto}/>
                     <Button title={texts.next} onPress={handleSubmit} disabled={!isFormValid()}/>

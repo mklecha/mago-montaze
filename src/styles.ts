@@ -44,6 +44,16 @@ export const summaryStyles = StyleSheet.create({
     button: {
         borderWidth: 1,
         borderColor: '#fff',
+    },
+    photosContainer: {
+        borderStyle: 'dashed',
+        borderColor: '#777',
+        borderWidth: 1,
+        alignItems: 'center',
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginBottom: 10
     }
 });
 

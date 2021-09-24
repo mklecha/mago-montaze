@@ -5,7 +5,7 @@ import {Config} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
 import {composeMail} from "../../mailComposer/composeMail";
 import MyHeader from "../MyHeader";
-import {containerStyles, summaryStyles} from '../../styles';
+import {containerStyles, photoPickerStyles, summaryStyles} from '../../styles';
 
 export interface SummaryProps {
     config: Config,
@@ -57,10 +57,14 @@ export default function Summary(props: SummaryProps) {
                     {getField(texts.form.numberOfPersons, '' + props.formValues.numberOfPersons)}
                     {getField(texts.form.comments, '' + props.formValues.comments)}
 
-                    <Text>{texts.form.photos}</Text>
-                    {props.formValues.photos.map((value: string, index: number) => (
-                        <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
-                    ))}
+                    <Text>{texts.form.photos}:</Text>
+                    <View style={[photoPickerStyles.photosContainer, summaryStyles.photosContainer]}>
+                        {props.formValues.photos.map((value: string, index: number) => (
+                            <View key={index} style={photoPickerStyles.photoContainer}>
+                                <Image source={{uri: value}} style={photoPickerStyles.photo} resizeMode={'contain'}/>
+                            </View>
+                        ))}
+                    </View>
                     <View style={summaryStyles.button}><Button title={texts.back} onPress={handleBack}/></View>
                     <View style={summaryStyles.button}><Button title={texts.summary.sendMail} onPress={handleSend}/></View>
                     <View style={summaryStyles.button}><Button title={texts.summary.finish} onPress={handleFinish}/></View>
