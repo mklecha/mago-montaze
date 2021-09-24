@@ -32,6 +32,21 @@ export const containerStyles = StyleSheet.create({
     }
 })
 
+export const summaryStyles = StyleSheet.create({
+    field: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginBottom: 3
+    },
+    fieldValue: {
+        fontWeight: "bold"
+    },
+    button: {
+        borderWidth: 1,
+        borderColor: '#fff',
+    }
+})
+
 export const inputStyles = StyleSheet.create({
     colorBlack: {
         color: '#000'
@@ -46,7 +61,7 @@ export const inputStyles = StyleSheet.create({
         padding: 8,
     },
     numberInput: {
-      padding: 8
+        padding: 8
     },
     multiline: {
         textAlignVertical: "top"
