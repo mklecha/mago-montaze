@@ -6,11 +6,12 @@ import {texts} from "../../../texts";
 export interface MyDatePickerProps {
     setDate: (date: Date) => void;
     minimumDate?: Date;
+    defaultDate?: Date;
 }
 
 export default function MyDatePicker(props: MyDatePickerProps) {
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState<Date>();
+    const [value, setValue] = useState(props.defaultDate);
 
     const handleChange = (event: any, selectedDate: any) => {
         setOpen(false);

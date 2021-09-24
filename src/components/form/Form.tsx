@@ -16,15 +16,22 @@ export interface FormProps {
     setConfig: (config: ConfigContainer) => void;
 }
 
+const useIfDefined = (value: any, defaultValue: any) => {
+    if(value !== undefined){
+        return value;
+    }
+    return defaultValue;
+}
+
 export default function Form(props: FormProps) {
-    const [jobSuccessful, setJobSuccessful] = useState(true);
-    const [localization, setLocalization] = useState('');
-    const [clientName, setClientName] = useState('');
-    const [startTimestamp, setStartTimestamp] = useState<Date>();
-    const [endTimestamp, setEndTimestamp] = useState<Date>();
-    const [numberOfPersons, setNumberOfPersons] = useState(1);
-    const [comments, setComments] = useState('');
-    const [photos, setPhotos] = useState<string[]>([]);
+    const [jobSuccessful, setJobSuccessful] = useState(useIfDefined(props.formValues?.jobSuccessful, true) );
+    const [localization, setLocalization] = useState(props.formValues?.localization || '');
+    const [clientName, setClientName] = useState(props.formValues?.clientName || '');
+    const [startTimestamp, setStartTimestamp] = useState(props.formValues?.startTimestamp);
+    const [endTimestamp, setEndTimestamp] = useState(props.formValues?.endTimestamp);
+    const [numberOfPersons, setNumberOfPersons] = useState(useIfDefined(props.formValues?.numberOfPersons, 1));
+    const [comments, setComments] = useState(props.formValues?.comments || '');
+    const [photos, setPhotos] = useState<string[]>(props.formValues?.photos || []);
 
     const reopenConfig = () => {
         const newConfig = {config: props.config, initialized: false}
@@ -64,18 +71,20 @@ export default function Form(props: FormProps) {
                 <TextInput
                     style={styles.input}
                     onChangeText={e => setLocalization(e)}
+                    defaultValue={props.formValues?.localization || ''}
                 />
                 <Text>{texts.form.clientName}</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={e => setClientName(e)}
+                    defaultValue={props.formValues?.clientName || ''}
                 />
 
                 <Text>{texts.form.startDate}</Text>
-                <MyDatePicker setDate={setStartTimestamp}/>
+                <MyDatePicker setDate={setStartTimestamp} defaultDate={startTimestamp}/>
 
                 <Text>{texts.form.endDate}</Text>
-                <MyDatePicker setDate={setEndTimestamp} minimumDate={startTimestamp}/>
+                <MyDatePicker setDate={setEndTimestamp} minimumDate={startTimestamp} defaultDate={endTimestamp}/>
 
                 <Text>{texts.form.numberOfPersons}</Text>
                 <NumericInput
@@ -92,6 +101,7 @@ export default function Form(props: FormProps) {
                     onChangeText={e => setComments(e)}
                     multiline={true}
                     numberOfLines={3}
+                    defaultValue={props.formValues?.comments || ''}
                 />
 
 
