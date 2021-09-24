@@ -1,7 +1,6 @@
 export const texts = {
     next: "Next",
     back: "Back",
-    loading: "Loading",
     openConfig: "Open configuration",
     yes: "Yes",
     no: "No",

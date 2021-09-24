@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import {Keyboard, StyleSheet, TextInput} from "react-native";
+import {Keyboard, TextInput} from "react-native";
 import {texts} from "../../../texts";
+import {inputStyles} from "../../../styles";
 
 export interface MyDatePickerProps {
     setDate: (date: Date) => void;
@@ -26,7 +27,7 @@ export default function MyDatePicker(props: MyDatePickerProps) {
         <>
             <TextInput
                 value={!!value ? value.toLocaleDateString() : texts.datePicker.selectDate}
-                style={styles.input}
+                style={inputStyles.input}
                 onFocus={() => setOpen(true)}/>
             {open && (<DateTimePicker
                     testID="dateTimePicker"
@@ -41,16 +42,3 @@ export default function MyDatePicker(props: MyDatePickerProps) {
         </>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fff',
-        padding: 8
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: '#777',
-        padding: 8,
-        margin: 10,
-    }
-});

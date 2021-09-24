@@ -10,3 +10,48 @@ export const headerStyles = StyleSheet.create({
         justifyContent: "center"
     }
 });
+
+export const containerStyles = StyleSheet.create({
+    container: {
+        backgroundColor: '#fff',
+    },
+    innerContainer: {
+        padding: 10
+    },
+    center: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    row: {
+        marginTop: 10,
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
+    }
+})
+
+export const inputStyles = StyleSheet.create({
+    colorBlack: {
+        color: '#000'
+    },
+    label: {
+        marginTop: 10,
+        color: '#000'
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#777',
+        padding: 8,
+    },
+    numberInput: {
+      padding: 8
+    },
+    multiline: {
+        textAlignVertical: "top"
+    },
+    button: {
+        marginTop: 20
+    }
+})

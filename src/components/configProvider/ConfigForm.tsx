@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {CONFIG_KEY, DEFAULT_MAIL} from "../../vars";
 import {ConfigContainer} from "../../model/Config";
-import {Button, SafeAreaView, ScrollView, StyleSheet, Text, TextInput} from "react-native";
+import {Button, SafeAreaView, ScrollView, Text, TextInput, View} from "react-native";
 import {texts} from "../../texts";
 import MyHeader from "../MyHeader";
+import {containerStyles, inputStyles} from "../../styles";
 
 export interface ConfigFormProps {
     config?: ConfigContainer
@@ -29,34 +30,29 @@ export default function ConfigForm(props: ConfigFormProps) {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={containerStyles.container}>
             <ScrollView>
                 <MyHeader title={texts.config.title}/>
-                <Text>{texts.config.yourName}</Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={e => setName(e)}
-                    defaultValue={props.config?.config?.name || ''}
-                />
-                <Text>{texts.config.receiverMail}</Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={e => setMail(e)}
-                    defaultValue={props.config?.config?.mail || DEFAULT_MAIL}
-                />
-                <Button title={texts.config.save} onPress={saveConfiguration}/>
+
+                <View style={containerStyles.innerContainer}>
+                    <Text style={inputStyles.label}>{texts.config.yourName}</Text>
+                    <TextInput
+                        style={inputStyles.input}
+                        onChangeText={e => setName(e)}
+                        defaultValue={props.config?.config?.name || ''}
+                    />
+
+                    <Text style={inputStyles.label}>{texts.config.receiverMail}</Text>
+                    <TextInput
+                        style={inputStyles.input}
+                        onChangeText={e => setMail(e)}
+                        defaultValue={props.config?.config?.mail || DEFAULT_MAIL}
+                    />
+                    <View style={inputStyles.button}>
+                        <Button title={texts.config.save} onPress={saveConfiguration} />
+                    </View>
+                </View>
             </ScrollView>
         </SafeAreaView>
     );
 }
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fff',
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: '#777',
-        padding: 8,
-        margin: 10,
-    }
-});
