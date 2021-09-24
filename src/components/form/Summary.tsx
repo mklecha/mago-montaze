@@ -1,5 +1,5 @@
-import React from 'react';
-import {Alert, Button, Image, SafeAreaView, ScrollView, Text, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {Alert, BackHandler, Button, Image, SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {texts} from "../../texts";
 import {Config} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
@@ -14,6 +14,18 @@ export interface SummaryProps {
 }
 
 export default function Summary(props: SummaryProps) {
+
+    useEffect(() => {
+        const backAction = () => {
+            handleBack();
+            return true;
+        };
+
+        const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
+
+        return () => backHandler.remove();
+    }, []);
+
 
     const getField = (label: string, value: string) => (
         <View style={summaryStyles.field}>
@@ -58,13 +70,15 @@ export default function Summary(props: SummaryProps) {
                     {getField(texts.form.comments, '' + props.formValues.comments)}
 
                     <Text>{texts.form.photos}:</Text>
-                    <View style={[photoPickerStyles.photosContainer, summaryStyles.photosContainer]}>
-                        {props.formValues.photos.map((value: string, index: number) => (
-                            <View key={index} style={photoPickerStyles.photoContainer}>
-                                <Image source={{uri: value}} style={photoPickerStyles.photo} resizeMode={'contain'}/>
-                            </View>
-                        ))}
-                    </View>
+                    {(props.formValues.photos || []).length > 0 && (
+                        <View style={[photoPickerStyles.photosContainer, summaryStyles.photosContainer]}>
+                            {props.formValues.photos.map((value: string, index: number) => (
+                                <View key={index} style={photoPickerStyles.photoContainer}>
+                                    <Image source={{uri: value}} style={photoPickerStyles.photo} resizeMode={'contain'}/>
+                                </View>
+                            ))}
+                        </View>
+                        )}
                     <View style={summaryStyles.button}><Button title={texts.back} onPress={handleBack}/></View>
                     <View style={summaryStyles.button}><Button title={texts.summary.sendMail} onPress={handleSend}/></View>
                     <View style={summaryStyles.button}><Button title={texts.summary.finish} onPress={handleFinish}/></View>
