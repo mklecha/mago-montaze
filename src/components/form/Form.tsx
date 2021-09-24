@@ -7,6 +7,7 @@ import {texts} from "../../texts";
 import MyDatePicker from "./inputs/MyDatePicker";
 import NumericInput from 'react-native-numeric-input';
 import {validateForm} from "./validator";
+import MyHeader from "../MyHeader";
 
 export interface FormProps {
     config: Config;
@@ -54,7 +55,7 @@ export default function Form(props: FormProps) {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <Text>{texts.form.title}</Text>
+                <MyHeader title={texts.form.title} openConfig={reopenConfig}/>
 
                 <Text>{texts.form.jobSuccessful}</Text>
                 <Switch value={jobSuccessful} onValueChange={value => setJobSuccessful(value)}/>
@@ -98,7 +99,6 @@ export default function Form(props: FormProps) {
                 {photos.map((value: string, index: number) => (
                     <Image key={index} source={{uri: value}} style={{width: 200, height: 200}}/>
                 ))}
-                <Button title={texts.openConfig} onPress={reopenConfig}/>
                 <Button title={texts.next} onPress={handleSubmit} disabled={!validateForm({
                     jobSuccessful: jobSuccessful,
                     localization: localization,
@@ -118,8 +118,6 @@ export default function Form(props: FormProps) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        padding: 8,
-        marginTop: 50
     },
     numberInput: {
         padding: 8,

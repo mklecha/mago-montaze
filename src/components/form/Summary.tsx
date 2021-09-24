@@ -4,6 +4,7 @@ import {texts} from "../../texts";
 import {Config} from "../../model/Config";
 import {FormValues} from "../../model/FormValues";
 import {composeMail} from "../../mailComposer/composeMail";
+import MyHeader from "../MyHeader";
 
 export interface SummaryProps {
     config: Config,
@@ -44,7 +45,7 @@ export default function Summary(props: SummaryProps) {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <Text>{texts.summary.title}</Text>
+                <MyHeader title={texts.summary.title}/>
 
                 {getField(texts.form.jobSuccessful, props.formValues.jobSuccessful ? texts.yes : texts.no)}
                 {getField(texts.form.localization, props.formValues.localization)}
@@ -69,8 +70,6 @@ export default function Summary(props: SummaryProps) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        padding: 8,
-        marginTop: 50
     },
     formValue: {
         fontWeight: 'bold'

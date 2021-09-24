@@ -4,6 +4,7 @@ import {CONFIG_KEY, DEFAULT_MAIL} from "../../vars";
 import {ConfigContainer} from "../../model/Config";
 import {Button, SafeAreaView, ScrollView, StyleSheet, Text, TextInput} from "react-native";
 import {texts} from "../../texts";
+import MyHeader from "../MyHeader";
 
 export interface ConfigFormProps {
     config?: ConfigContainer
@@ -30,7 +31,7 @@ export default function ConfigForm(props: ConfigFormProps) {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <Text>{texts.config.title}</Text>
+                <MyHeader title={texts.config.title}/>
                 <Text>{texts.config.yourName}</Text>
                 <TextInput
                     style={styles.input}
@@ -51,8 +52,6 @@ export default function ConfigForm(props: ConfigFormProps) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        padding: 8,
-        marginTop: 50
     },
     input: {
         borderWidth: 1,
