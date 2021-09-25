@@ -1,10 +1,17 @@
 import {StyleSheet} from 'react-native';
 
+const colors = {
+    blue: '#2289DC',
+    white: '#fff',
+    gray: '#777',
+    black: '#000'
+}
+
 export const headerStyles = StyleSheet.create({
     title: {
-        color: '#fff',
+        color: colors.white,
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     settingsIcon: {
         justifyContent: 'center'
@@ -13,7 +20,7 @@ export const headerStyles = StyleSheet.create({
 
 export const containerStyles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
     },
     innerContainer: {
         padding: 10
@@ -43,11 +50,11 @@ export const summaryStyles = StyleSheet.create({
     },
     button: {
         borderWidth: 1,
-        borderColor: '#fff',
+        borderColor: colors.white,
     },
     photosContainer: {
         borderStyle: 'dashed',
-        borderColor: '#777',
+        borderColor: colors.gray,
         borderWidth: 1,
         alignItems: 'center',
         flex: 1,
@@ -59,15 +66,15 @@ export const summaryStyles = StyleSheet.create({
 
 export const inputStyles = StyleSheet.create({
     colorBlack: {
-        color: '#000'
+        color: colors.black
     },
     label: {
         marginTop: 10,
-        color: '#000'
+        color: colors.black
     },
     input: {
         borderWidth: 1,
-        borderColor: '#777',
+        borderColor: colors.gray,
         padding: 8,
     },
     numberInput: {
@@ -88,7 +95,7 @@ export const photoPickerStyles = StyleSheet.create({
         paddingBottom: 10,
 
         borderStyle: 'dashed',
-        borderColor: '#777',
+        borderColor: colors.gray,
         borderWidth: 1,
         alignItems: 'center',
     },
