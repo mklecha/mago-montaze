@@ -9,7 +9,7 @@ const colors = {
 
 export const headerStyles = StyleSheet.create({
     container: {
-      backgroundColor: colors.blue,
+        backgroundColor: colors.blue,
     },
     titleBar: {
         flexDirection: "row",
@@ -74,6 +74,17 @@ export const summaryStyles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         marginBottom: 10
+    },
+    divider: {
+        height: 0,
+        borderWidth: 0,
+        borderTopWidth: 2,
+        borderStyle: 'solid',
+        borderColor: colors.gray,
+        marginTop: 15,
+        marginBottom: 15,
+        marginLeft: 2,
+        marginRight: 2
     }
 });
 
@@ -97,7 +108,7 @@ export const inputStyles = StyleSheet.create({
         textAlignVertical: 'top'
     },
     button: {
-        marginTop: 20
+        marginTop: 20,
     }
 });
 

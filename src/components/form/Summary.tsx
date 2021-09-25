@@ -81,6 +81,7 @@ export default function Summary(props: SummaryProps) {
                         )}
                     <View style={summaryStyles.button}><Button title={texts.back} onPress={handleBack}/></View>
                     <View style={summaryStyles.button}><Button title={texts.summary.sendMail} onPress={handleSend}/></View>
+                    <View style={summaryStyles.divider}/>
                     <View style={summaryStyles.button}><Button title={texts.summary.finish} onPress={handleFinish}/></View>
                 </View>
             </ScrollView>
