@@ -8,13 +8,26 @@ const colors = {
 }
 
 export const headerStyles = StyleSheet.create({
+    container: {
+      backgroundColor: colors.blue,
+    },
+    titleBar: {
+        flexDirection: "row",
+        paddingTop: 10,
+    },
     title: {
         color: colors.white,
         fontSize: 20,
         fontWeight: 'bold',
+        marginLeft: 'auto'
+    },
+    settingsIconButton: {
+        marginLeft: 'auto'
     },
     settingsIcon: {
-        justifyContent: 'center'
+        width: 25,
+        height: 25,
+        marginRight: 10
     }
 });
 
