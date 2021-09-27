@@ -5,19 +5,19 @@ export const composeTitle = (name: string, startDate: Date) => {
 }
 
 export const composeBody = (name: string, formValues: FormValues) => {
-    return `<p>Raport montażu<br/>
-<b>Zgłaszający:</b> ${name}<br/>
-<br/>    
-${formValues.jobSuccessful ? 'Montaż udany' : 'Montaż nieudany'}<br/>
-<b>Lokalizacja:</b> ${formValues.localization}<br/>
-<b>Nazwa klienta:</b> ${formValues.clientName}<br/>
-<b>Data rozpoczęcia:</b> ${formValues.startTimestamp.toLocaleDateString()}<br/>
-<b>Data zakończenia:</b> ${formValues.endTimestamp.toLocaleDateString()}<br/>
-<br/>
-<b>Liczba osób:</b> ${formValues.numberOfPersons}<br/>
-<b>Uwagi:</b> ${formValues.comments.length > 0 ? formValues.comments : 'Brak'}<br/>
-<br/>
-${((formValues.photos || []).length > 0) ? 'Zdjęcia w załączniku<br/>' : ''}
+    return `Raport montażu
+Zgłaszający: ${name}
+    
+${formValues.jobSuccessful ? 'Montaż udany' : 'Montaż nieudany'}
+Lokalizacja: ${formValues.localization}
+Nazwa klienta: ${formValues.clientName}
+Data rozpoczęcia: ${formValues.startTimestamp.toLocaleDateString()}
+Data zakończenia: ${formValues.endTimestamp.toLocaleDateString()}
+
+Liczba osób: ${formValues.numberOfPersons}
+Uwagi: ${formValues.comments.length > 0 ? formValues.comments : 'Brak'}
+
+${((formValues.photos || []).length > 0) ? 'Zdjęcia w załączniku' : ''}
 Pozdrawiam,
-${name}</p>`;
+${name}`;
 }

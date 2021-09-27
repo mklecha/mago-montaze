@@ -8,7 +8,6 @@ const composeOptions = (config: Config, formValues: FormValues): MailComposerOpt
     recipients: [config.mail],
     subject: composeTitle(config.name, formValues.startTimestamp),
     body: composeBody(config.name, formValues),
-    isHtml: true,
     attachments: formValues.photos
 });
 
