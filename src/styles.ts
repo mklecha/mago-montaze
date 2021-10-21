@@ -49,6 +49,10 @@ export const containerStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
+    },
+    logoMargins: {
+        marginTop: 10,
+        marginBottom: 10
     }
 });
 

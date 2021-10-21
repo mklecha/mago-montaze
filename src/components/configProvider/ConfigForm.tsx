@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {CONFIG_KEY, DEFAULT_MAIL} from "../../vars";
 import {ConfigContainer} from "../../model/Config";
-import {Button, SafeAreaView, ScrollView, Text, TextInput, View} from "react-native";
+import {Button, Image, SafeAreaView, ScrollView, Text, TextInput, View} from "react-native";
 import {texts} from "../../texts";
 import MyHeader from "../MyHeader";
 import {containerStyles, inputStyles} from "../../styles";
+import logo from "../../../assets/name.png";
 
 export interface ConfigFormProps {
     config?: ConfigContainer
@@ -33,6 +34,10 @@ export default function ConfigForm(props: ConfigFormProps) {
         <SafeAreaView style={containerStyles.container}>
             <ScrollView>
                 <MyHeader title={texts.config.title}/>
+
+                <View style={[containerStyles.center, containerStyles.logoMargins]}>
+                    <Image source={logo}/>
+                </View>
 
                 <View style={containerStyles.innerContainer}>
                     <Text style={inputStyles.label}>{texts.config.yourName}</Text>
